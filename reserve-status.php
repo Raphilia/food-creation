@@ -18,16 +18,16 @@ if (@mysqli_num_rows($result)) { //if a placement is found
     <head>
     <link rel="stylesheet" href="main.css">
     </head>
-    <body><b>
+    <body><p><b>
     <label>Reserve No.</label><br>' .
     $_SESSION['reserve_id'] . '<br><br>' .
     '<label>Venue</label><br>' .
     $_SESSION['reserve_venue'] . '<br><br>' .
-    '<label>Date</label><br>' .
+    '<label>Date (YYYY/MM/DD)</label><br>' .
     $_SESSION['reserve_date'] . '<br><br>' .
     '<label>Time</label><br>' .
-    $_SESSION['reserve_time'] . '<br><br>' .
-    '</b></body>
+    $_SESSION['reserve_time'] . '<br>' .
+    '</b></p></body>
     </html>';
 } else { //if user has not placed any reservation
     echo '

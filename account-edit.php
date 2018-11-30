@@ -1,5 +1,5 @@
 <?php
-// this php is to edit information for an already placed reservation
+// this php is to edit information for an account
 include 'connect.php';
 //obtain user id from session
 if (session_status() == PHP_SESSION_NONE) { //start session if not started

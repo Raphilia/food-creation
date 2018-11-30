@@ -1,4 +1,7 @@
 /* Stylesheet for Food Creation's webpages */
+html {
+    scroll-behavior: smooth;
+}
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -354,6 +357,8 @@ textarea {
     border-radius: 5px;
     width: 40%;
     margin: 30px auto;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 /* web anchor style */
 a.anchor {

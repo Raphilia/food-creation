@@ -17,22 +17,38 @@
             <center>
                 <h1>Account Management</h1>
                 <ul>
-                    <li><a href="#status">Status</a></li>
-                    <li><a href="#placement">Place Reservation</a></li>
-                    <li><a href="#edit">Edit Date & Time</a></li>
-                    <li><a href="#cancel">Cancel Placement</a></li>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#edit">Edit Info</a></li>
+                    <li><a href="#recent">Recent Purchases</a></li>
+                    <li><a href="#delete">Delete Account</a></li>
                 </ul>
             </center>
         </div>
 
         <div class="container-border" style="margin-top: 130px;">
-            <a class="anchor" id="status"></a>
-            <p><b>Account Status:</b></p>
+            <a class="anchor" id="overview"></a>
+            <p><b>Account Overview:</b></p>
+            <?php include 'account-overview.php'; ?>
         </div>
 
-        <div class="container-border"></div>
-        <div class="container-border"></div>
-        <div class="container-border"></div>
+        <div class="container-border">
+            <a class="anchor" id="edit"></a>
+            <p><b>Edit Information:</b></p>
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="recent"></a>
+            <p><b>Recent Purchases:</b></p>
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="delete"></a>
+            <p><b>Delete Account:</b></p>
+        </div>
+
+        <ul>
+            <li><a href="#top">Back to top</a></li>
+        </ul>
     </div>
 
     <div w3-include-html="footer.html"></div>

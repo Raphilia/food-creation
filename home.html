@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Food Creation | Order, Book, Customize & Share</title>
+	<link rel="icon" href="img/fc-icon.png">
+	<link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+	<div w3-include-html="header.html"></div>
+
+	<div class="content">
+		<div class="slides">
+			<div class="mySlides fade">
+				<a href="mcdonalds.php"><img src="img/slides/mcd.png" alt="Freshly Backed McD" class="slides" /></a>
+			</div>
+			<div class="mySlides fade">
+				<a href="pizza-hut.php"><img src="img/slides/pizza.png" alt="Pizza Hut" class="slides" /></a>
+			</div>
+			<div class="mySlides fade">
+				<a href="nasi-ayam.php"><img src="img/slides/rice.png" alt="Nasi Ayam" class="slides" /></a>
+			</div>
+			<!--next and previous button-->
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+
+		<div class="categories">
+			<div class="right-banner">
+				<img src="img/right-banner.png" alt="discount" height="500" />
+			</div>
+			<div class="container">
+				<a href="mcdonalds.php"><img src="img/mcd.jpg" alt="McDonald's" class="image"></a>
+				<div class="overlay">McDonald's</div>
+			</div>
+			<div class="container">
+				<a href="pizza-hut.php"><img src="img/pizza.jpg" alt="Pizza" class="image"></a>
+				<div class="overlay">Pizza Hut</div>
+			</div>
+			<div class="container">
+				<a href="texas-chicken.php"><img src="img/texas-chicken.jpg" alt="Texas Chicken" class="image"></a>
+				<div class="overlay">Texas Chicken</div>
+			</div>
+			<div class="container">
+				<a href="nasi-lemak.php"><img src="img/nasi-lemak.jpg" alt="Nasi Lemak" class="image"></a>
+				<div class="overlay">Nasi Lemak</div>
+			</div>
+			<div class="container">
+				<a href="nasi-arab.php"><img src="img/nasi-arab.jpg" alt="Nasi Arab" class="image"></a>
+				<div class="overlay">Nasi Arab</div>
+			</div>
+			<div class="container">
+				<a href="seafood.php"><img src="img/seafood.jpg" alt="Seafood" class="image"></a>
+				<div class="overlay">Seafood</div>
+			</div>
+		</div>
+	</div>
+
+	<div w3-include-html="footer.html"></div>
+
+	<!--LOAD EXTERNAL JAVASCRIPTS-->
+	<script src="main.js"></script>
+	<script>includeHTML();</script>
+</body>
+
+</html>

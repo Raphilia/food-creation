@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Food Creation | Log Into Account</title>
+    <link rel="icon" href="img/fc-icon.png">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div w3-include-html="header.html"></div>
+
+    <div class="content">
+        <br>
+        <h1>Login</h1>
+        <div class="form-container">
+            <form action="login.php" method="POST">
+                <label for="username"><b>Username</b></label>
+                <input type="text" name="username" id="username" placeholder="Please enter your existing username" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" name="password" id="password" placeholder="Please enter your account's password" required>
+                <input type="checkbox" onclick="showPassword()"><label>Show Password</label>
+                <center><br><button type="submit">Login</button></center>
+            </form>
+        </div>
+
+        <div class="reset-container">
+            <!--to do: reset button that requires receipt id-->
+            <center><br><br><label><b>Having trouble? We can</b></label>
+                <button>Reset</button>
+                <label><b>your password.</b></label></center>
+        </div>
+    </div>
+
+    <div w3-include-html="footer.html"></div>
+
+    <!--LOAD EXTERNAL JAVASCRIPTS-->
+    <script src="main.js"></script>
+    <script>
+        includeHTML();
+    </script>
+    <script>
+        function showPassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</body>
+
+</html>

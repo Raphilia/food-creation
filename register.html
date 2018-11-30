@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Food Creation | Register New Account</title>
+    <link rel="icon" href="img/fc-icon.png">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+    <div w3-include-html="header.html"></div>
+
+    <div class="content">
+        <br><h1>Register</h1>
+        <div class="form-container">
+            <form action="register.php" method="POST">
+                <label for="username"><b>Username</b></label>
+                <input type="text" name="username" id="username" placeholder="Please enter your username" required>
+                <label for="full_name"><b>Full Name</b></label>
+                <input type="text" name="full_name" id="full_name" placeholder="Please enter your full name" required>
+                <label for="email"><b>Email</b></label>
+                <input type="text" name="email" id="email" placeholder="Please enter your email" required>
+                <label for="password"><b>Password</b></label>
+                <input type="password" name="password" id="password" placeholder="Please enter your password" required>
+                <label for="address"><b>Address</b></label>
+                <textarea rows="4" cols="50" maxlength="300" name="address" id="address" placeholder="Please enter your address" required></textarea>
+                <label for="dob"><b>Date of Birth</b></label>
+                <input type="date" name="dob" id="dob" placeholder="Please enter your date of birth" required>
+                <center><button type="submit">Register</button></center>
+            </form>
+        </div>
+
+        <div class="reset-container">
+                <center><br><br><label><b>By registering, you agree to our</b></label>
+                    <button>Terms & Conditions.</button></center>
+        </div>
+    </div>
+
+    <div w3-include-html="footer.html"></div>
+
+    <!--LOAD EXTERNAL JAVASCRIPTS-->
+    <script src="main.js"></script>
+    <script>
+        includeHTML();
+    </script>
+</body>
+
+</html>

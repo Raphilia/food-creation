@@ -1,0 +1,86 @@
+<!doctype <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Food Creation | Reservations</title>
+    <link rel="icon" href="img/fc-icon.png">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <?php include 'guest.php';?>
+</head>
+
+<body>
+    <div w3-include-html="header.html"></div>
+
+    <div class="content" style="text-align:center;">
+        <br>
+        <div class="nav">
+            <center>
+                <h1>Reservations & Booking</h1>
+                <ul>
+                    <li><a href="#status">Status</a></li>
+                    <li><a href="#placement">Place Reservation</a></li>
+                    <li><a href="#edit">Edit Date & Time</a></li>
+                    <li><a href="#cancel">Cancel Placement</a></li>
+                </ul>
+            </center>
+        </div>
+
+        <div class="container-border" style="margin-top: 130px;">
+            <a class="anchor" id="status"></a>
+            <p><b>Reservation Status:</b></p>
+            <?php include 'reserve-status.php';?>
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="placement"></a>
+            <p><b>Place Reservation:</b></p>
+            <div class="reserve-container">
+                <form action="reserve-place.php" method="POST">
+                    <label for="venue"><b>Venue</b></label>
+                    <input type="text" name="venue" id="venue" placeholder="Enter your desired venue" required>
+                    <label for="date"><b>Reservation Date</b></label>
+                    <input type="date" name="date" id="dare" placeholder="Please enter the reservation date" required>
+                    <label for="time"><b>Reservation Time</b></label>
+                    <input type="time" name="time" id="time" placeholder="Please enter the reservation time" required>
+                    <p>Note: only one reservation can be made at a time.</p>
+                    <center><button type="submit">Request</button></center>
+                </form>
+            </div>
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="edit"></a>
+            <p><b>Edit Date & Time:</b></p>
+            <div class="reserve-container">
+                <form action="reserve-edit.php" method="POST">
+                    <label for="date"><b>Edit Date</b></label>
+                    <input type="date" name="date" id="dare" placeholder="Please enter the reservation date" required>
+                    <label for="time"><b>Edit Time</b></label>
+                    <input type="time" name="time" id="time" placeholder="Please enter the reservation time" required>
+                    <center><br><button type="submit">Confirm</button></center>
+                </form>
+            </div>
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="cancel"></a>
+            <p><b>Cancel Placement:</b></p>
+            <form action="reserve-cancel.php" method="post">
+                <center><button type="submit">Just Do It</button></center>
+            </form>
+        </div>
+        <ul>
+            <li><a href="#top">Back to top</a></li>
+        </ul>
+    </div>
+
+    <div w3-include-html="footer.html"></div>
+
+    <!--LOAD EXTERNAL JAVASCRIPTS-->
+    <script src="main.js"></script>
+    <script>
+        includeHTML();
+    </script>
+</body>
+
+</html>

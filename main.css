@@ -1,0 +1,494 @@
+/* Stylesheet for Food Creation's webpages */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* hide horizontal scrollbar from body */
+
+body {
+    overflow-x: hidden;
+    background-color: white;
+}
+
+/* header, content and footer formatting */
+
+.header {
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    margin-top: -130px;
+    background-color: white;
+}
+
+div.content {
+    margin-top: 130px;
+    position: relative;
+}
+
+div.footer {
+    margin-left: 5%;
+    margin-top: 50px;
+    font-family: Segoe UI;
+    color: gray;
+    background-color: white;
+}
+
+a.footer {
+    color: gray;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* contents formatting */
+
+h1 {
+    color: #252525;
+    font-family: Segoe UI;
+    font-weight: normal;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+}
+
+.snsutil {
+    margin-top: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.header-logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 30px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.tag-button {
+    position: relative;
+}
+
+div.site-util {
+    /* do not change name or conflict with below */
+    vertical-align: middle;
+    margin-top: 25px;
+    display: inline-block;
+    font-family: Segoe UI;
+    font-size: 11px;
+    color: gray;
+}
+
+a.site-util {
+    color: gray;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+/* list formatting */
+
+ul {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 25px;
+}
+
+li {
+    font-family: Segoe UI;
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: gray;
+}
+
+/* horizontal line formatting */
+
+hr {
+    border: 1.5px solid black;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    margin-left: -10%;
+    width: 150%;
+}
+
+/* main page slides formatting */
+
+.slides {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+}
+
+.mySlides {
+    display: none;
+    max-width: 100%;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.categories {
+    position: relative;
+    display: block;
+    margin: 20px;
+}
+
+.right-banner {
+    float: left;
+    position: relative;
+    margin-right: 40px;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+div.container {
+    position: relative;
+    width: 50%;
+    max-width: 340px;
+    display: inline-block;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.container:hover .overlay {
+    opacity: 1;
+}
+
+/* Full-width input fields */
+
+input[type=text],
+input[type=password],
+input[type=date],
+input[type=time] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: Segoe UI;
+    color: gray;
+}
+
+p {
+    font-family: Segoe UI;
+}
+
+button {
+    background: teal;
+    color: #fff;
+    border: none;
+    position: relative;
+    height: 50px;
+    font-size: 1.6em;
+    padding: 0 2em;
+    cursor: pointer;
+    transition: 800ms ease all;
+    outline: none;
+    margin: 10px;
+}
+
+button:hover {
+    background: #fff;
+    color: #1AAB8A;
+}
+
+button:before,
+button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #1AAB8A;
+    transition: 400ms ease all;
+}
+
+button:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+
+button:hover:before,
+button:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}
+
+.form-container {
+    width: 25%;
+    margin: 0 auto;
+}
+
+.reserve-container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+label {
+    font-family: Segoe UI;
+    font-weight: lighter;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: Segoe UI;
+    resize: vertical;
+}
+
+.container-border {
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 5px;
+    width: 40%;
+    margin: 30px auto;
+}
+/* web anchor style */
+a.anchor {
+    display: block;
+    position: relative;
+    top: -200px;
+    visibility: hidden;
+}
+
+/* rotating image */
+
+.image-rotate {
+    -webkit-animation: spin 3s linear infinite;
+    -moz-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/* reversed image */
+
+.image-reverse {
+    transform: scaleX(-1);
+}
+
+/* windows 10 loader */
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    vertical-align: middle;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 51px;
+    height: 51px;
+    margin: 6px;
+    border: 6px solid gray;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: gray transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* coin loading */
+.lds-circle {
+    display: inline-block;
+    transform: translateZ(1px);
+}
+
+.lds-circle>div {
+    display: inline-block;
+    width: 51px;
+    height: 51px;
+    margin: 6px;
+    border-radius: 50%;
+    background: yellow;
+    animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes lds-circle {
+
+    0%,
+    100% {
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    50% {
+        transform: rotateY(1800deg);
+        animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+
+    100% {
+        transform: rotateY(3600deg);
+    }
+}
+
+div.nav {
+    background-color: white;
+    z-index: 9;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: -15px;
+    width: 50%;
+}
+
+.anchor {
+    display:block;
+    padding-top:100px;
+    margin-top:-100px;
+ }

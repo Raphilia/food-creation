@@ -1,0 +1,47 @@
+<!doctype <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Food Creation | Account Status</title>
+    <link rel="icon" href="img/fc-icon.png">
+    <link rel="stylesheet" href="main.css" />
+    <?php include 'guest.php';?>
+</head>
+
+<body>
+    <div w3-include-html="header.html"></div>
+
+    <div class="content" style="text-align:center;">
+        <br>
+        <div class="nav">
+            <center>
+                <h1>Account Management</h1>
+                <ul>
+                    <li><a href="#status">Status</a></li>
+                    <li><a href="#placement">Place Reservation</a></li>
+                    <li><a href="#edit">Edit Date & Time</a></li>
+                    <li><a href="#cancel">Cancel Placement</a></li>
+                </ul>
+            </center>
+        </div>
+
+        <div class="container-border" style="margin-top: 130px;">
+            <a class="anchor" id="status"></a>
+            <p><b>Account Status:</b></p>
+        </div>
+
+        <div class="container-border"></div>
+        <div class="container-border"></div>
+        <div class="container-border"></div>
+    </div>
+
+    <div w3-include-html="footer.html"></div>
+
+    <!--LOAD EXTERNAL JAVASCRIPTS-->
+    <script src="main.js"></script>
+    <script>
+        includeHTML();
+    </script>
+</body>
+
+</html>

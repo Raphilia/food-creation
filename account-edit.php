@@ -80,24 +80,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <center><br><img src="img/logo.png" alt="foocreation" width="200" /><br><br>
         <h1>Success! Your changes has been saved.<br><br>
         Meanwhile, here\'s what you\'ve edited:<br><p><b>'
-        . implode(", ",$update) .
+        . implode(", ", $update) .
         '</b></p>Thinking of a joke...</h1>
         <img src="img/square-loader.gif" alt="nyan" width="100">
         </center>
         </body>
         </html>';
     } else {
-        echo '<html>
-        <head>
+        echo '<html><head>
         <link rel="stylesheet" type="text/css" href="main.css">
-        <meta http-equiv="refresh" content="4;url=account.html" />
-        </head>
-        <body>
-        <center><br><img src="img/logo.png" alt="foocreation" width="200" /><br><br>
-        <h1><p>Not trying to change anything, I see...</p>
-        <p><i>*facepalm*</i></p>
-        <p>Travelling to Hanamura</p></h1>
-        <img class="image-reverse"src="img/nyancat.gif" alt="nyan" width="100">
+        <meta http-equiv="refresh" content="4;url=account.html" /></head>
+        <body background="img/hanamura.png" style="overflow: hidden;">
+        <center><br><h1><p class="overwatch">Not trying to change anything, I see...</p>
+        <p class="overwatch"><i>*facepalm*</i></p>
+        <p class="overwatch">Travelling to Hanamura</p></h1>
+        <div w3-include-html="overwatch-loader.html"></div>
+        <!--LOAD EXTERNAL JAVASCRIPTS-->
+        <script src="main.js"></script>
+        <script>
+        includeHTML();
+        </script>
         </center>
         </body>
         </html>';

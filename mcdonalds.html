@@ -1,0 +1,89 @@
+<!doctype <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Food Creation | Log Into Account</title>
+    <link rel="icon" href="img/fc-icon.png">
+    <link rel="stylesheet" href="main.css">
+    <?php include 'guest.php';?>
+</head>
+
+<body>
+    <div w3-include-html="header.html"></div>
+
+    <div class="content" style="text-align:center;">
+        <br>
+        <div class="nav">
+            <center>
+                <h1>McDonald's Malaysia</h1>
+                <ul>
+                    <li><a href="#popular">Popular</a></li>
+                    <li><a href="#value">Value Meals</a></li>
+                    <li><a href="#drinks">Drinks & Beverages</a></li>
+                    <li><a href="#confirm">Cart Logs</a></li>
+                </ul>
+            </center>
+        </div>
+
+        <div class="container-border" style="margin-top: 130px;padding-left: 50px;padding-right: 50px;">
+            <a class="anchor" id="popular"></a>
+            <p><b>Popular Items:</b></p>
+            <div class="item-panel">
+                <a href="#" onclick="cartAdd(3);cartDisplay();"><img src="img/mcd/double-cheeseburger.jpg" alt="" title="Double Cheeseburger"
+                        class="item-panel"></a>
+            </div>
+            <div class="item-panel">
+                <a href="#" onclick="cartAdd(4);cartDisplay();"><img src="img/mcd/premium-salad.jpg" alt="" title="Premium Salad"
+                        class="item-panel"></a>
+            </div>
+            <div class="item-panel">
+                <a href="#" onclick="cartAdd(5);cartDisplay();"><img src="img/mcd/chicken-mcnuggets.jpg" title="Chicken McNuggets"
+                        alt="" class="item-panel"></a>
+            </div>
+            <div class="item-panel">
+                <a href="#" onclick="cartAdd(6);cartDisplay();"><img src="img/mcd/apple-pie.jpg" alt="" title="Apple Pie"
+                        class="item-panel"></a>
+            </div>
+            <div class="item-panel">
+                <a href="#" onclick="cartAdd(7);cartDisplay();"><img src="img/mcd/egg-mcmuffin.png" alt="" title="Egg McMuffin"
+                        class="item-panel"></a>
+            </div>
+            <div class="item-panel">
+                <a href="#" onclick="cartAdd(8);cartDisplay();"><img src="img/mcd/happy-meal.jpg" alt="" title="Happy Meal"
+                        class="item-panel"></a>
+            </div>
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="value"></a>
+            <p><b>Value Meals:</b></p>
+            <p>when padoru is more valuable</p>
+            <img src="img/padoru.gif" alt="" width="100">
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="drinks"></a>
+            <p><b>Drinks & Beverages:</b></p>
+            <p>BRB while I run out to get the drinks</p>
+            <img src="img/stickman.gif" alt="" width="100">
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="confirm"></a>
+            <p><b>Cart Items:</b></p>
+            <p id='cart-item'></p>
+            <button onclick="cartRemove();cartDisplay();">Undo</button>
+        </div>
+
+    </div>
+
+    <div w3-include-html="footer.html"></div>
+
+    <!--LOAD EXTERNAL JAVASCRIPTS-->
+    <script src="main.js"></script>
+    <script>
+        includeHTML();
+    </script>
+</body>
+
+</html>

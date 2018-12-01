@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $u = mysqli_real_escape_string($connect, $_POST['username']);
     $p = mysqli_real_escape_string($connect, $_POST['password']);
     //make query, attach to result and run it
-    $q = "SELECT * FROM user WHERE (username = '$u' AND password = '$p')";
+    $q = "SELECT * FROM user WHERE (username = '$u' AND BINARY password = '$p')";
     $result = mysqli_query($connect, $q);
     if (@mysqli_num_rows($result) == 1) { //if one account is found
         session_start();

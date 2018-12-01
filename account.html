@@ -34,6 +34,21 @@
         <div class="container-border">
             <a class="anchor" id="edit"></a>
             <p><b>Edit Information:</b></p>
+            <div class="account-container">
+                <form action="account-edit.php" method="POST">
+                    <label for="username"><b>Edit Username</b></label>
+                    <input type="text" name="username" id="username" placeholder="Please enter new username">
+                    <label for="full_name"><b>Edit Full Name</b></label>
+                    <input type="text" name="full_name" id="full_name" placeholder="Please enter new full name">
+                    <label for="email"><b>Edit Email</b></label>
+                    <input type="text" name="email" id="email" placeholder="Please enter new email">
+                    <label for="address"><b>Edit Address</b></label>
+                    <textarea rows="4" cols="50" maxlength="300" name="address" id="address" placeholder="Please enter new address"></textarea>
+                    <label for="dob"><b>Edit Date of Birth</b></label>
+                    <input type="date" name="dob" id="dob" placeholder="Please enter new date of birth">
+                    <center><br><button type="submit">Confirm</button></center>
+                </form>
+            </div>
         </div>
 
         <div class="container-border">
@@ -44,6 +59,11 @@
         <div class="container-border">
             <a class="anchor" id="delete"></a>
             <p><b>Delete Account:</b></p>
+            <form action="" method="post">
+                <center><button type="submit">Just Do It</button>
+                    <img src="img/delet.gif" alt="delet" width="200">
+                </center>
+            </form>
         </div>
 
         <ul>

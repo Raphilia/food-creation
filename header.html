@@ -10,10 +10,10 @@
 <body>
     <div class="header">
         <div class="snsutil">
-            <a href="#"><img src="img/sns-icon/sns-facebook.png" target="_blank" alt="facebook" width="30" /></a>
-            <a href="#"><img src="img/sns-icon/sns-insta.png" target="_blank" alt="instagram" width="30" /></a>
+            <a href="https://www.facebook.com/shoukaku.kai"><img src="img/sns-icon/sns-facebook.png" target="_blank" alt="facebook" width="30" /></a>
+            <a href="https://www.instagram.com/shoukaku_kai/"><img src="img/sns-icon/sns-insta.png" target="_blank" alt="instagram" width="30" /></a>
             <a href="#"><img src="img/sns-icon/sns-p.png" target="_blank" alt="phone app" width="30" /></a>
-            <a href="#"><img src="img/sns-icon/sns-youtube.png" target="_blank" alt="youtube" width="30" /></a>
+            <a href="https://www.youtube.com/channel/UCCirlk5tmz6rKH-ADGstPVA"><img src="img/sns-icon/sns-youtube.png" target="_blank" alt="youtube" width="30" /></a>
         </div>
 
         <div class="header-logo">
@@ -25,14 +25,14 @@
         if (isset($_SESSION['username'])) {
             //if the user is logged in
             echo '<div class="site-util" id="site-util">
-                <a class="site-util" href="#">' . strtoupper($_SESSION["username"]) . '</a>&nbsp;|
-                <a class="site-util" href="settings.html">SETTINGS</a>&nbsp;|
+                <a class="site-util" href="account.html">' . strtoupper($_SESSION["username"]) . '</a>&nbsp;|
+                <a class="site-util" href="account.html#edit">SETTINGS</a>&nbsp;|
                 <a class="site-util" href="logout.php">LOGOUT</a></div>';
           } else {
               //if the user is not logged in
             echo '
             <div class="site-util" id="site-util">
-                <a class="site-util" href="#">GUEST MODE</a>&nbsp;|
+                <a class="site-util">GUEST MODE</a>&nbsp;|
                 <a class="site-util" href="login.html">LOGIN</a>&nbsp;|
                 <a class="site-util" href="register.html">REGISTER</a>
             </div>

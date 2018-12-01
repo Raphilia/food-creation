@@ -7,47 +7,99 @@ if (session_status() == PHP_SESSION_NONE) { //start session if not started
 }
 $uid = $_SESSION['user_id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //run select query to check if a placement already exist
-    $q = "SELECT * FROM reservation WHERE user_id = " . $uid;
-    $result = mysqli_query($connect, $q);
-    $rows = mysqli_num_rows($result);
-    if ($rows > 0) { //check if placement already exist
-        //proceed to editing
-        $d = mysqli_escape_string($connect, trim($_POST['date']));
-        $t = mysqli_escape_string($connect, trim($_POST['time']));
-        $q = "UPDATE reservation SET reserve_date = '". $d . "' , reserve_time = '". $t .
-        "' WHERE user_id = ". $uid;
-        $result = @mysqli_query($connect, $q);
-        if ($result) { //display confirmation page
-            echo '<html>
-            <head>
-            <link rel="stylesheet" type="text/css" href="main.css">
-            <meta http-equiv="refresh" content="4;url=reservation.html" />
-            </head>
-            <body><center><br><img src="img/logo.png" alt="laneige" width="200"/><br><br>
-            <h1>Success! Your reservation has been edited.<br><br>
-            Breaking the speed limit...</h1>
-            <br><img src="img/speedo.gif" height="150"></center>
-            </body>
-            </html>';
-            exit();
+    $update = array(); //initialize array for user to see what has been changed
+
+    //check for a name
+    if (!empty($_POST['username'])) {
+        $u = mysqli_escape_string($connect, trim($_POST['username']));
+        $q = 'UPDATE user SET username = "' . $u . '" WHERE user_id = ' . $uid;
+        $result = mysqli_query($connect, $q);
+        if ($result) {
+            $update[] = 'username';
         } else { //error handling
-            echo '<h1>System error.</h1>';
             echo '<p>' . mysqli_error($connect) . '<br><br>Query: ' . $q . '</p>';
         }
-    } else { //else display no placement found
+    }
+
+    //check for a full name
+    if (!empty($_POST['full_name'])) {
+        $fn = mysqli_escape_string($connect, trim($_POST['full_name']));
+        $q = 'UPDATE user SET full_name = "' . $fn . '" WHERE user_id = ' . $uid;
+        $result = mysqli_query($connect, $q);
+        if ($result) {
+            $update[] = 'full name';
+        } else { //error handling
+            echo '<p>' . mysqli_error($connect) . '<br><br>Query: ' . $q . '</p>';
+        }
+    }
+
+    //check for email
+    if (!empty($_POST['email'])) {
+        $e = mysqli_escape_string($connect, trim($_POST['email']));
+        $q = 'UPDATE user SET email = "' . $e . '" WHERE user_id = ' . $uid;
+        $result = mysqli_query($connect, $q);
+        if ($result) {
+            $update[] = 'email';
+        } else { //error handling
+            echo '<p>' . mysqli_error($connect) . '<br><br>Query: ' . $q . '</p>';
+        }
+    }
+
+    //check for address
+    if (!empty($_POST['address'])) {
+        $a = mysqli_escape_string($connect, trim($_POST['address']));
+        $q = 'UPDATE user SET address = "' . $a . '" WHERE user_id = ' . $uid;
+        $result = mysqli_query($connect, $q);
+        if ($result) {
+            $update[] = 'address';
+        } else { //error handling
+            echo '<p>' . mysqli_error($connect) . '<br><br>Query: ' . $q . '</p>';
+        }
+    }
+
+    //check for date of birth
+    if (!empty($_POST['dob'])) {
+        $dob = mysqli_escape_string($connect, trim($_POST['dob']));
+        $q = 'UPDATE user SET date_of_birth = "' . $dob . '" WHERE user_id = ' . $uid;
+        $result = mysqli_query($connect, $q);
+        if ($result) {
+            $update[] = 'date of birth';
+        } else { //error handling
+            echo '<p>' . mysqli_error($connect) . '<br><br>Query: ' . $q . '</p>';
+        }
+    }
+    //echo the complete output
+    if (!empty($update)) {
+        mysqli_close($connect);
         echo '<html>
         <head>
         <link rel="stylesheet" type="text/css" href="main.css">
-        <meta http-equiv="refresh" content="3;url=reservation.html" />
+        <meta http-equiv="refresh" content="4;url=account.html" />
         </head>
-        <body><center><br><img src="img/logo.png" alt="laneige" width="200"/><br><br>
-        <h1>You currently have no placement to be edited.<br><br>
-        How about making one?<br><br>
-        Redirecting in 3 seconds...</h1></center>
+        <body>
+        <center><br><img src="img/logo.png" alt="foocreation" width="200" /><br><br>
+        <h1>Success! Your changes has been saved.<br><br>
+        Meanwhile, here\'s what you\'ve edited:<br><p><b>'
+        . implode(", ",$update) .
+        '</b></p>Thinking of a joke...</h1>
+        <img src="img/square-loader.gif" alt="nyan" width="100">
+        </center>
+        </body>
+        </html>';
+    } else {
+        echo '<html>
+        <head>
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <meta http-equiv="refresh" content="4;url=account.html" />
+        </head>
+        <body>
+        <center><br><img src="img/logo.png" alt="foocreation" width="200" /><br><br>
+        <h1><p>Not trying to change anything, I see...</p>
+        <p><i>*facepalm*</i></p>
+        <p>Travelling to Hanamura</p></h1>
+        <img class="image-reverse"src="img/nyancat.gif" alt="nyan" width="100">
+        </center>
         </body>
         </html>';
     }
-    mysqli_free_result($result);
-    mysqli_close($connect);
 }

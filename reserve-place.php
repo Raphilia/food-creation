@@ -6,9 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (session_status() == PHP_SESSION_NONE) { //start session if not started
         session_start();
     }
-    $uid = $_SESSION['user_id'];
+    $uid = $_SESSION['userID'];
     //run select query to check if a placement already exist
-    $q = "SELECT * FROM reservation WHERE user_id = " . $uid;
+    $q = "SELECT * FROM reservations WHERE userID = " . $uid;
     $result = mysqli_query($connect, $q);
     $rows = mysqli_num_rows($result);
     if ($rows > 0) { //check if placement already exist
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $v = mysqli_escape_string($connect, trim($_POST['venue']));
         $d = mysqli_escape_string($connect, trim($_POST['date']));
         $t = mysqli_escape_string($connect, trim($_POST['time']));
-        $q = "Insert INTO reservation(reserve_id, reserve_venue, reserve_date, reserve_time, user_id)
+        $q = "Insert INTO reservations(reserveID, reserveVenue, reserveDate, reserveTime, userID)
         VALUES('', '$v', '$d', '$t', '$uid')";
         $result = @mysqli_query($connect, $q);
 

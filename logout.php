@@ -1,6 +1,6 @@
 <?php
-session_start(); //start session
-session_unset(); //remove session
+session_start();
+session_unset();
 echo '<html><head><link rel="stylesheet" href="main.css">
 <meta http-equiv="refresh" content="4;url=home.html"/></head>
 <body><center><br><img src="img/logo.png" alt="foodcreation" width="200"/><br><br>

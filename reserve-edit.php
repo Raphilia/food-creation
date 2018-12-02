@@ -5,18 +5,18 @@ include 'connect.php';
 if (session_status() == PHP_SESSION_NONE) { //start session if not started
     session_start();
 }
-$uid = $_SESSION['user_id'];
+$uid = $_SESSION['userID'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //run select query to check if a placement already exist
-    $q = "SELECT * FROM reservation WHERE user_id = " . $uid;
+    $q = "SELECT * FROM reservations WHERE userID = " . $uid;
     $result = mysqli_query($connect, $q);
     $rows = mysqli_num_rows($result);
     if ($rows > 0) { //check if placement already exist
         //proceed to editing
         $d = mysqli_escape_string($connect, trim($_POST['date']));
         $t = mysqli_escape_string($connect, trim($_POST['time']));
-        $q = "UPDATE reservation SET reserve_date = '". $d . "' , reserve_time = '". $t .
-        "' WHERE user_id = ". $uid;
+        $q = "UPDATE reservations SET reserve_date = '". $d . "' , reserveTime = '". $t .
+        "' WHERE userID = ". $uid;
         $result = @mysqli_query($connect, $q);
         if ($result) { //display confirmation page
             echo '<html>

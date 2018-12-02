@@ -5,9 +5,9 @@ include 'connect.php';
 if (session_status() == PHP_SESSION_NONE) { //start session if not started
     session_start();
 }
-$uid = $_SESSION['user_id'];
+$uid = $_SESSION['userID'];
 //run query
-$q = "SELECT r.reserve_id, r.reserve_venue, r.reserve_date, r.reserve_time, u.username, u.user_id FROM reservation r INNER JOIN user u ON r.user_id=u.user_id WHERE r.user_id = " . $uid;
+$q = "SELECT r.reserveID, r.reserveVenue, r.reserveDate, r.reserveTime, u.username, u.userID FROM reservations r INNER JOIN users u ON r.userID=u.userID WHERE r.userID = " . $uid;
 $result = mysqli_query($connect, $q);
 //load status to session
 $_SESSION = mysqli_fetch_array($result, MYSQLI_ASSOC);

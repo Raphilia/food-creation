@@ -6,8 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         session_start();
     }
     //obtain user id from session
-    $uid = $_SESSION['user_id'];
-    $q = "DELETE FROM reservation WHERE user_id = " . $uid;
+    $uid = $_SESSION['userID'];
+    $q = "DELETE FROM reservations WHERE userID = " . $uid;
     $result = mysqli_query($connect, $q);
     if ($result) { //display confirmation page
         echo '<html>

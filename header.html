@@ -10,17 +10,17 @@
 <body>
     <div class="header">
         <div class="snsutil">
-            <a href="https://www.facebook.com/shoukaku.kai"><img src="img/sns-icon/sns-facebook.png" target="_blank" alt="facebook" width="30" /></a>
-            <a href="https://www.instagram.com/shoukaku_kai/"><img src="img/sns-icon/sns-insta.png" target="_blank" alt="instagram" width="30" /></a>
-            <a href="#"><img src="img/sns-icon/sns-p.png" target="_blank" alt="phone app" width="30" /></a>
-            <a href="https://www.youtube.com/channel/UCCirlk5tmz6rKH-ADGstPVA"><img src="img/sns-icon/sns-youtube.png" target="_blank" alt="youtube" width="30" /></a>
+            <img src="img/sns-icon/sns-facebook.png" alt="facebook" width="30">
+            <img src="img/sns-icon/sns-insta.png" alt="instagram" width="30">
+            <img src="img/sns-icon/sns-p.png" alt="android" width="30">
+            <img src="img/sns-icon/sns-youtube.png" alt="youtube" width="30">
         </div>
 
         <div class="header-logo">
-            <a href="home.html"><img src="img/logo.png" alt="laneige" width="200" /></a>
+            <a href="home.html"><img src="img/logo.png" alt="foodcreation" width="200"></a>
         </div>
 
-        <?php
+        <?php //change site-util depending on whether user is logged in or not
         session_start();
         if (isset($_SESSION['username'])) {
             //if the user is logged in
@@ -28,32 +28,32 @@
                 <a class="site-util" href="account.html">' . strtoupper($_SESSION["username"]) . '</a>&nbsp;|
                 <a class="site-util" href="account.html#edit">SETTINGS</a>&nbsp;|
                 <a class="site-util" href="logout.php">LOGOUT</a></div>';
-          } else {
-              //if the user is not logged in
-            echo '
-            <div class="site-util" id="site-util">
+        } else {
+            //if the user is not logged in
+            echo '<div class="site-util" id="site-util">
                 <a class="site-util">GUEST MODE</a>&nbsp;|
                 <a class="site-util" href="login.html">LOGIN</a>&nbsp;|
-                <a class="site-util" href="register.html">REGISTER</a>
-            </div>
-            ';
-          }
-        ?>
+                <a class="site-util" href="register.html">REGISTER</a></div>';
+        } ?>
+
         <div class="navbar">
             <ul class="navbar" style="text-align:center;">
-                <li><a class="active" href="home.html">Home</a></li>
-                <li><a class="active" href="about-us.html">About Us</a></li>
-                <li><a class="active" href="reservation.html">Reservation</a></li>
-                <li><a class="active" href="account.html">Account</a></li>
-                <li><a class="active" href="orders.html">Orders</a></li>
-                <li><a class="active" href="cart.html">Cart</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="reservation.html">Reservation</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="cart.html">Cart</a></li>
             </ul>
         </div>
         <hr>
     </div>
 
     <!--LOAD EXTERNAL JAVASCRIPTS-->
-	<script src="main.js"></script>
-    <script>includeHTML();</script>
+    <script src="main.js"></script>
+    <script>
+        includeHTML();
+    </script>
 </body>
+
 </html>

@@ -5,14 +5,14 @@ include 'connect.php';
 if (session_status() == PHP_SESSION_NONE) { //start session if not started
     session_start();
 }
-$uid = $_SESSION['user_id'];
+$uid = $_SESSION['userID'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $update = array(); //initialize array for user to see what has been changed
 
     //check for a name
     if (!empty($_POST['username'])) {
         $u = mysqli_escape_string($connect, trim($_POST['username']));
-        $q = 'UPDATE user SET username = "' . $u . '" WHERE user_id = ' . $uid;
+        $q = 'UPDATE users SET username = "' . $u . '" WHERE userID = ' . $uid;
         $result = mysqli_query($connect, $q);
         if ($result) {
             $update[] = 'username';
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //check for a full name
     if (!empty($_POST['full_name'])) {
         $fn = mysqli_escape_string($connect, trim($_POST['full_name']));
-        $q = 'UPDATE user SET full_name = "' . $fn . '" WHERE user_id = ' . $uid;
+        $q = 'UPDATE users SET fullName = "' . $fn . '" WHERE userID = ' . $uid;
         $result = mysqli_query($connect, $q);
         if ($result) {
             $update[] = 'full name';
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //check for email
     if (!empty($_POST['email'])) {
         $e = mysqli_escape_string($connect, trim($_POST['email']));
-        $q = 'UPDATE user SET email = "' . $e . '" WHERE user_id = ' . $uid;
+        $q = 'UPDATE users SET email = "' . $e . '" WHERE userID = ' . $uid;
         $result = mysqli_query($connect, $q);
         if ($result) {
             $update[] = 'email';
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //check for address
     if (!empty($_POST['address'])) {
         $a = mysqli_escape_string($connect, trim($_POST['address']));
-        $q = 'UPDATE user SET address = "' . $a . '" WHERE user_id = ' . $uid;
+        $q = 'UPDATE users SET address = "' . $a . '" WHERE userID = ' . $uid;
         $result = mysqli_query($connect, $q);
         if ($result) {
             $update[] = 'address';
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //check for date of birth
     if (!empty($_POST['dob'])) {
         $dob = mysqli_escape_string($connect, trim($_POST['dob']));
-        $q = 'UPDATE user SET date_of_birth = "' . $dob . '" WHERE user_id = ' . $uid;
+        $q = 'UPDATE users SET birthDate = "' . $dob . '" WHERE birthDate = ' . $uid;
         $result = mysqli_query($connect, $q);
         if ($result) {
             $update[] = 'date of birth';

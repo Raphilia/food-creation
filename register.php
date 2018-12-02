@@ -3,14 +3,14 @@ include "connect.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //append form input into global variables
     $u = mysqli_escape_string( $connect, trim( $_POST[ 'username' ] ) );
+    $p = mysqli_escape_string( $connect, trim( $_POST[ 'password' ] ) );
     $f = mysqli_escape_string( $connect, trim( $_POST[ 'full_name' ] ) );
     $e = mysqli_escape_string( $connect, trim( $_POST[ 'email' ] ) );
-    $p = mysqli_escape_string( $connect, trim( $_POST[ 'password' ] ) );
     $a = mysqli_escape_string( $connect, trim( $_POST[ 'address' ] ) );
     $dob = mysqli_escape_string( $connect, trim( $_POST[ 'dob' ] ) );
     //make the query
-    $q = "Insert INTO user(user_id, username, full_name, password, email, address, date_of_birth)
-    VALUES('', '$u', '$f', '$p', '$e', '$a', '$dob')";
+    $q = "Insert INTO users(userID, username, password, fullName, email, address, birthDate)
+    VALUES('', '$u', '$p', '$f', '$e', '$a', '$dob')";
     //run the query
     $result = @mysqli_query($connect, $q);
     if ($result) { //if successful display confirmation page

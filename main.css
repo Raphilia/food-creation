@@ -665,4 +665,5 @@ div.item-panel {
 
 img.item-panel {
     border-radius: 10px;
+    cursor: pointer;
 }

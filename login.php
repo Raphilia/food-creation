@@ -1,14 +1,14 @@
 <?php
 include "connect.php";
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //apend form value to global variables
     $u = mysqli_real_escape_string($connect, $_POST['username']);
     $p = mysqli_real_escape_string($connect, $_POST['password']);
     //make query, attach to result and run it
-    $q = "SELECT * FROM user WHERE (username = '$u' AND BINARY password = '$p')";
+    $q = "SELECT * FROM users WHERE (username = '$u' AND BINARY password = '$p')";
     $result = mysqli_query($connect, $q);
     if (@mysqli_num_rows($result) == 1) { //if one account is found
+        //start session and attach login data to session
         session_start();
         $_SESSION = mysqli_fetch_array($result, MYSQLI_ASSOC);
         echo '<html><head><link rel="stylesheet" href="main.css">
@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <img src="img/nyancat.gif" alt="nyan" width="100"></h1></center></body></html>';
         exit();
     }
+    //free mysqli attributes
     mysqli_free_result($result);
     mysqli_close($connect);
 }

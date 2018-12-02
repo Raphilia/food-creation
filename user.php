@@ -1,4 +1,5 @@
 <?php
+//filter logged-in user if they are trying to access register page
 session_start();
 if (!empty($_SESSION)) {
     echo '<html><head>

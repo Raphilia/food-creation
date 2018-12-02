@@ -1,8 +1,44 @@
-//Javascript for Food Creation's webpages
+/* cart processing scripts */
+var cart = [];
+var cartName = [];
+//add item to cart function
+function cartAdd(itemID) {
+    //push itemID retrieved from button into array
+    cart.push(itemID);
+    if (itemID == 3) {
+        cartName.push('Double Cheeseburger');
+    } else if (itemID == 4) {
+        cartName.push('Premium Salad');
+    } else if (itemID == 5) {
+        cartName.push('Chicken McNuggets');
+    } else if (itemID == 6) {
+        cartName.push('Apple Pie');
+    } else if (itemID == 7) {
+        cartName.push('Egg McMuffin');
+    } else if (itemID == 8) {
+        cartName.push('Happy Meal');
+    } else { cartName.push('Invalid Item'); }
+}
+
+//remove last item from cart
+function cartRemove() {
+    cart.pop();
+    cartName.pop();
+}
+
+//display cart items in a label and store to localStorage
+function cartDisplay() {
+    //convert array into JSON and insert into localStorage
+    localStorage["cart"] = JSON.stringify(cart);
+    localStorage["cartName"] = JSON.stringify(cartName);
+    //convert cartName array to string
+    var list = cartName.join('<br>');
+    //display it to customer in cart log
+    document.getElementById("cart-item").innerHTML = list;
+}
+
+/* main page slides processing scripts */
 var slideIndex = 1;
-var itemID = 0;
-var cart = new Array();
-var cartName = new Array();
 showSlides(slideIndex);
 
 function plusSlides(n) {
@@ -33,16 +69,17 @@ function showSlides(n) {
     dots[slideIndex - 1].className += " active";
 }
 
+/* w3school's include html function */
 function includeHTML() {
     var z, i, elmnt, file, xhttp;
-    /*loop through a collection of all HTML elements:*/
+    //loop through a collection of all HTML elements:
     z = document.getElementsByTagName("*");
     for (i = 0; i < z.length; i++) {
         elmnt = z[i];
-        /*search for elements with a certain atrribute:*/
+        //search for elements with a certain atrribute:
         file = elmnt.getAttribute("w3-include-html");
         if (file) {
-            /*make an HTTP request using the attribute value as the file name:*/
+            //make an HTTP request using the attribute value as the file name:
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4) {
@@ -52,57 +89,20 @@ function includeHTML() {
                     if (this.status == 404) {
                         elmnt.innerHTML = "Page not found.";
                     }
-                    /*remove the attribute, and call this function once more:*/
+                    //remove the attribute, and call this function once more:
                     elmnt.removeAttribute("w3-include-html");
                     includeHTML();
                 }
             }
             xhttp.open("GET", file, true);
             xhttp.send();
-            /*exit the function:*/
+            //exit the function:
             return;
         }
     }
 }
 
-function cartAdd(itemID) {
-    //push value retrieved from button into array
-    if (itemID == 3) {
-        cart.push(3);
-        cartName.push('Double Cheeseburger');
-    } else if (itemID == 4) {
-        cart.push(4);
-        cartName.push('Premium Salad');
-    } else if (itemID == 5) {
-        cart.push(5);
-        cartName.push('Chicken McNuggets');
-    } else if (itemID == 6) {
-        cart.push(6);
-        cartName.push('Apple Pie');
-    } else if (itemID == 7) {
-        cart.push(7);
-        cartName.push('Egg McMuffin');
-    } else if (itemID == 8) {
-        cart.push(8);
-        cartName.push('Happy Meal');
-    } else { exit(); }
-}
-
-function cartRemove() {
-    cart.pop();
-    cartName.pop();
-}
-
-function cartDisplay() {
-    //convert array into JSON and insert into session storage
-    localStorage["cart"] = JSON.stringify(cart);
-    localStorage["cartName"] = JSON.stringify(cartName);
-    //convert cartName array to string
-    var list = cartName.join('<br>');
-    //display it to customer in cart log
-    document.getElementById("cart-item").innerHTML = list;
-}
-
+/* account deletion button troll */
 function delet() {
     if (document.getElementById("delet").innerHTML == '') {
         document.getElementById("delet").innerHTML = 'no account deletion for now';

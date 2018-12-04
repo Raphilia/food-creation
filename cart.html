@@ -11,15 +11,58 @@
 <body>
     <div w3-include-html="header.html"></div>
 
-    <div class="content" style="text-align:center;"></div>
+    <div class="content" style="text-align:center;">
+        <br>
+        <div class="nav">
+            <center>
+                <h1>Cart Information</h1>
+                <ul>
+                    <li><a href="#content">Overview</a></li>
+                    <li><a href="#remove-last">Remove Last</a></li>
+                    <li><a href="#remove-all">Remove All</a></li>
+                    <li><a href="#buy">Buy All</a></li>
+                </ul>
+            </center>
+        </div>
+
+        <div class="container-border" style="margin-top: 130px;">
+            <a class="anchor" id="content"></a>
+            <p><b>Current Items:</b></p>
+            <p id='cart-item'><img src="img/nyancat.gif" alt="nyan" width="100"></p>
+            <button onclick="updateLabel();">Refresh</button>
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="remove-last"></a>
+            <button onclick="removeLast();">Remove Last</button>
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="remove-all"></a>
+            <button onclick="removeAll();">Remove All</button>
+        </div>
+
+        <div class="container-border">
+            <a class="anchor" id="buy"></a>
+            <br>
+            <button id="buy" onclick="buyCart();">Buy All</button>
+            <p id="output">shut up and take my money</p>
+        </div>
+
+        <ul>
+            <li><a href="#top">Back to top</a></li>
+        </ul>
+    </div>
 
     <div w3-include-html="footer.html"></div>
 
     <!--LOAD EXTERNAL JAVASCRIPTS-->
-    <script src="main.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
     <script>
         includeHTML();
     </script>
+    <script>retrieveStorage();</script>
 </body>
 
 </html>

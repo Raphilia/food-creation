@@ -1,9 +1,9 @@
-/* cart processing scripts */
-var cart = [];
-var cartName = [];
+/* CART SCRIPTS */
+var cart = cart || [];
+var cartName = cartName || [];
+
 //add item to cart function
 function cartAdd(itemID) {
-    //push itemID retrieved from button into array
     cart.push(itemID);
     if (itemID == 3) {
         cartName.push('Double Cheeseburger');
@@ -17,27 +17,65 @@ function cartAdd(itemID) {
         cartName.push('Egg McMuffin');
     } else if (itemID == 8) {
         cartName.push('Happy Meal');
-    } else { cartName.push('Invalid Item'); }
+    } else {
+        cartName.push('NotInDatabase Item');
+    }
+    updateLabel();
+    updateStorage();
+    var itemName = cartName.slice(-1)[0];
+    alert(itemName + ' was added to cart.');
 }
 
-//remove last item from cart
-function cartRemove() {
+//remove last item from array
+function removeLast() {
     cart.pop();
     cartName.pop();
+    updateLabel();
+    updateStorage();
 }
 
-//display cart items in a label and store to localStorage
-function cartDisplay() {
-    //convert array into JSON and insert into localStorage
-    localStorage["cart"] = JSON.stringify(cart);
-    localStorage["cartName"] = JSON.stringify(cartName);
-    //convert cartName array to string
-    var list = cartName.join('<br>');
-    //display it to customer in cart log
-    document.getElementById("cart-item").innerHTML = list;
+//clear all item in cart
+function removeAll() {
+    if (confirm('WE DOING THIS?!')) {
+        cart = [];
+        cartName = [];
+        updateLabel();
+        updateStorage();
+        alert('Cart emptied.');
+    } else {
+        alert("Good boy!");
+    }
 }
 
-/* main page slides processing scripts */
+//update the label
+function updateLabel() {
+    var x = cartName.join('<br>');
+    document.getElementById("cart-item").innerHTML = x;
+}
+
+//update information to localstorage: called by store page
+function updateStorage() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("cartName", JSON.stringify(cartName));
+}
+
+//retrieve cart info from localstorage: called by cart page
+function retrieveStorage() {
+    cart = JSON.parse(localStorage.getItem("cart"));
+    cartName = JSON.parse(localStorage.getItem("cartName"));
+}
+
+/* PASS JS CART TO PHP */
+function buyCart(){
+    retrieveStorage();
+    var jsonCart = JSON.stringify(cart);
+    $.post('purchase.php',{jsonCart:jsonCart},
+    function(output) {
+        $('#output').html(output);
+    });
+}
+
+/* HOMEPAGE SLIDESHOW SCRIPTS */
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -110,5 +148,12 @@ function delet() {
         document.getElementById("delet").innerHTML = 'omg didn\'t you read';
     } else if (document.getElementById("delet").innerHTML == 'omg didn\'t you read') {
         document.getElementById("delet").innerHTML = 'ok whatever';
-    } else { document.getElementById("delet").innerHTML = ''; }
+    } else {
+        document.getElementById("delet").innerHTML = '';
+    }
+}
+
+/* account deletion button troll */
+function comingSoon() {
+    alert('that store is coming soon™️');
 }

@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //proceed to editing
         $d = mysqli_escape_string($connect, trim($_POST['date']));
         $t = mysqli_escape_string($connect, trim($_POST['time']));
-        $q = "UPDATE reservations SET reserve_date = '". $d . "' , reserveTime = '". $t .
+        $q = "UPDATE reservations SET reserveDate = '". $d . "' , reserveTime = '". $t .
         "' WHERE userID = ". $uid;
         $result = @mysqli_query($connect, $q);
         if ($result) { //display confirmation page

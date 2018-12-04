@@ -652,7 +652,7 @@ p.overwatch {
 
 @font-face {
     font-family: "koverwatch";
-    src: url(koverwatch.ttf) format("truetype");
+    src: url(misc/koverwatch.ttf) format("truetype");
 }
 
 div.item-panel {

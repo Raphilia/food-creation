@@ -1,21 +1,23 @@
 /* CART SCRIPTS */
-var cart = cart || [];
-var cartName = cartName || [];
+//var cart = cart || [];
+//var cartName = cartName || [];
+var cart = new Array();
+var cartName = new Array();
 
 //add item to cart function
 function cartAdd(itemID) {
     cart.push(itemID);
-    if (itemID == 3) {
+    if (itemID == 1) {
         cartName.push('Double Cheeseburger');
-    } else if (itemID == 4) {
+    } else if (itemID == 2) {
         cartName.push('Premium Salad');
-    } else if (itemID == 5) {
+    } else if (itemID == 3) {
         cartName.push('Chicken McNuggets');
-    } else if (itemID == 6) {
+    } else if (itemID == 4) {
         cartName.push('Apple Pie');
-    } else if (itemID == 7) {
+    } else if (itemID == 5) {
         cartName.push('Egg McMuffin');
-    } else if (itemID == 8) {
+    } else if (itemID == 6) {
         cartName.push('Happy Meal');
     } else {
         cartName.push('NotInDatabase Item');
@@ -66,13 +68,24 @@ function retrieveStorage() {
 }
 
 /* PASS JS CART TO PHP */
-function buyCart(){
-    retrieveStorage();
-    var jsonCart = JSON.stringify(cart);
-    $.post('purchase.php',{jsonCart:jsonCart},
-    function(output) {
-        $('#output').html(output);
-    });
+function buyCart() {
+    var r = confirm("Proceed to buy all items currently in cart?");
+    if (r == true) {
+        retrieveStorage();
+        $.ajax({
+            type: "POST",
+            url: "purchase.php",
+            data: {
+                "id": 1,
+                "cart": JSON.stringify(cart)
+            },
+            success: function (data) {
+                output = JSON.stringify(data);
+                $('#output').html(output);
+            }
+        });
+        alert("Thanks for your patronage!");
+    }
 }
 
 /* HOMEPAGE SLIDESHOW SCRIPTS */

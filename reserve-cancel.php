@@ -1,15 +1,14 @@
 <?php
+/* CANCEL RESERVATION FOR CURRENT ACCOUNT */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include 'connect.php';
-    //obtain user id from session
-    if (session_status() == PHP_SESSION_NONE) { //start session if not started
+    if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    //obtain user id from session
     $uid = $_SESSION['userID'];
     $q = "DELETE FROM reservations WHERE userID = " . $uid;
     $result = mysqli_query($connect, $q);
-    if ($result) { //display confirmation page
+    if ($result) {
         echo '<html>
             <head>
             <link rel="stylesheet" type="text/css" href="main.css">
@@ -21,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </body>
             </html>';
         exit();
-    } else { //error handling
+    } else {
         echo '<h1>System error.</h1>';
         echo '<p>' . mysqli_error($connect) . '<br><br>Query: ' . $q . '</p>';
     }

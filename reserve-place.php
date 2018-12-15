@@ -1,9 +1,8 @@
 <?php
-//this php is to place a reservation for current user
+/* PLACE RESERVATION FOR CURRENT ACCOUNT */
 include "connect.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //obtain user id from session
-    if (session_status() == PHP_SESSION_NONE) { //start session if not started
+    if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
     $uid = $_SESSION['userID'];

@@ -1,7 +1,7 @@
 <?php
 include "connect.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //apend form value to global variables
+    //append form value to global variables
     $u = mysqli_real_escape_string($connect, $_POST['username']);
     $p = mysqli_real_escape_string($connect, $_POST['password']);
     //make query, attach to result and run it

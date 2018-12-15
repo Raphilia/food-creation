@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2018 at 02:17 PM
+-- Generation Time: Dec 15, 2018 at 03:52 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -31,22 +31,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `items` (
   `itemID` int(11) NOT NULL,
   `itemName` varchar(30) NOT NULL,
-  `itemStore` int(12) NOT NULL,
+  `itemStore` varchar(20) NOT NULL,
   `itemPrice` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `receipt-items`
+-- Dumping data for table `items`
 --
 
-CREATE TABLE `receipt-items` (
-  `purchaseID` int(11) NOT NULL,
-  `purchaseQuantity` int(11) NOT NULL DEFAULT '1',
-  `itemID` int(11) NOT NULL,
-  `receiptID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `items` (`itemID`, `itemName`, `itemStore`, `itemPrice`) VALUES
+(1, 'Double Cheeseburger', 'McDonald\'s', '15.99'),
+(2, 'Premium Salad', 'McDonald\'s', '4.99'),
+(3, 'Chicken McNuggets', 'McDonald\'s', '5.99'),
+(4, 'Apple Pie', 'McDonald\'s', '6.99'),
+(5, 'Egg McMuffin', 'McDonald\'s', '4.99'),
+(6, 'Happy Meal', 'McDonald\'s', '10.99');
 
 -- --------------------------------------------------------
 
@@ -56,12 +55,41 @@ CREATE TABLE `receipt-items` (
 
 CREATE TABLE `receipts` (
   `receiptID` int(11) NOT NULL,
-  `totalCost` decimal(10,2) NOT NULL,
-  `amountPaid` decimal(10,2) NOT NULL,
-  `amountReturned` decimal(10,2) NOT NULL,
-  `issueDate` date NOT NULL,
+  `totalCost` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `amountPaid` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `amountReturned` decimal(10,2) NOT NULL DEFAULT '0.00',
+  `issueDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `userID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `receipts`
+--
+
+INSERT INTO `receipts` (`receiptID`, `totalCost`, `amountPaid`, `amountReturned`, `issueDate`, `userID`) VALUES
+(6, '26.97', '0.00', '0.00', '2018-12-15 13:16:51', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `receipt_items`
+--
+
+CREATE TABLE `receipt_items` (
+  `purchaseID` int(11) NOT NULL,
+  `purchaseQuantity` int(11) NOT NULL DEFAULT '1',
+  `itemID` int(11) NOT NULL,
+  `receiptID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `receipt_items`
+--
+
+INSERT INTO `receipt_items` (`purchaseID`, `purchaseQuantity`, `itemID`, `receiptID`) VALUES
+(16, 1, 1, 6),
+(17, 1, 2, 6),
+(18, 1, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -105,7 +133,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userID`, `username`, `password`, `fullName`, `email`, `address`, `birthDate`) VALUES
-(1, 'Shoukaku', 'crane', '', 'mary.tateyama@gmail.com', '7045 Taman Gemencheh Baru 73200 Gemencheh Gemencheh Negeri Sembilan 73200 Malaysia', '2018-12-07');
+(1, 'Shoukaku', 'crane', 'Muhammad Amirun', 'mary.tateyama@gmail.com', '7045 Taman Gemencheh Baru 73200 Gemencheh Gemencheh Negeri Sembilan 73200 Malaysia', '2018-12-07');
 
 --
 -- Indexes for dumped tables
@@ -118,19 +146,19 @@ ALTER TABLE `items`
   ADD PRIMARY KEY (`itemID`);
 
 --
--- Indexes for table `receipt-items`
---
-ALTER TABLE `receipt-items`
-  ADD PRIMARY KEY (`purchaseID`),
-  ADD KEY `items-receipt` (`receiptID`),
-  ADD KEY `items-number` (`itemID`);
-
---
 -- Indexes for table `receipts`
 --
 ALTER TABLE `receipts`
   ADD PRIMARY KEY (`receiptID`),
   ADD KEY `user-receipts` (`userID`);
+
+--
+-- Indexes for table `receipt_items`
+--
+ALTER TABLE `receipt_items`
+  ADD PRIMARY KEY (`purchaseID`),
+  ADD KEY `items-receipt` (`receiptID`),
+  ADD KEY `items-number` (`itemID`);
 
 --
 -- Indexes for table `reservations`
@@ -153,19 +181,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `receipt-items`
---
-ALTER TABLE `receipt-items`
-  MODIFY `purchaseID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `receiptID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `receiptID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `receipt_items`
+--
+ALTER TABLE `receipt_items`
+  MODIFY `purchaseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `reservations`
@@ -177,24 +205,24 @@ ALTER TABLE `reservations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `receipt-items`
---
-ALTER TABLE `receipt-items`
-  ADD CONSTRAINT `items-number` FOREIGN KEY (`itemID`) REFERENCES `items` (`itemID`),
-  ADD CONSTRAINT `items-receipt` FOREIGN KEY (`receiptID`) REFERENCES `receipts` (`receiptID`);
-
---
 -- Constraints for table `receipts`
 --
 ALTER TABLE `receipts`
   ADD CONSTRAINT `user-receipts` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`);
+
+--
+-- Constraints for table `receipt_items`
+--
+ALTER TABLE `receipt_items`
+  ADD CONSTRAINT `items-number` FOREIGN KEY (`itemID`) REFERENCES `items` (`itemID`),
+  ADD CONSTRAINT `items-receipt` FOREIGN KEY (`receiptID`) REFERENCES `receipts` (`receiptID`);
 
 --
 -- Constraints for table `reservations`

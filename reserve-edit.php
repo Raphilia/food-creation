@@ -1,18 +1,17 @@
 <?php
-// this php is to edit information for an already placed reservation
+/* EDIT RESERVATION FOR CURRENT ACCOUNT */
 include 'connect.php';
-//obtain user id from session
-if (session_status() == PHP_SESSION_NONE) { //start session if not started
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 $uid = $_SESSION['userID'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //run select query to check if a placement already exist
+    //run select query to check if there's a placement to be edited
     $q = "SELECT * FROM reservations WHERE userID = " . $uid;
     $result = mysqli_query($connect, $q);
     $rows = mysqli_num_rows($result);
-    if ($rows > 0) { //check if placement already exist
-        //proceed to editing
+    if ($rows > 0) { //if placement is found
+        //proceed to editing the placement
         $d = mysqli_escape_string($connect, trim($_POST['date']));
         $t = mysqli_escape_string($connect, trim($_POST['time']));
         $q = "UPDATE reservations SET reserveDate = '". $d . "' , reserveTime = '". $t .

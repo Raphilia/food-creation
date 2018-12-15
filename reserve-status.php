@@ -1,12 +1,10 @@
 <?php
-//this php is to obtain reservation information for reservation page
+/* OBTAIN INFORMATION FOR RESERVATION PAGE */
 include 'connect.php';
-//obtain user id from session
-if (session_status() == PHP_SESSION_NONE) { //start session if not started
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 $uid = $_SESSION['userID'];
-//run query
 $q = "SELECT r.reserveID, r.reserveVenue, r.reserveDate, r.reserveTime, u.username, u.userID FROM reservations r INNER JOIN users u ON r.userID=u.userID WHERE r.userID = " . $uid;
 $result = mysqli_query($connect, $q);
 //load status to session

@@ -1,6 +1,6 @@
 <?php
 include "connect.php";
-if (session_status() == PHP_SESSION_NONE) { //start session if not started
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -8,11 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cart = json_decode($_POST['cart']);
     //if cart is not empty
     if ($cart) {
-        //make receipt and obtain receipt ID
+        //generate receipt in database and obtain receipt ID
         $q = "INSERT INTO receipts(userID) VALUES ($uid)";
         $result = mysqli_query($connect, $q);
         $receipt_id = mysqli_insert_id($connect);
         echo "Receipt with ID <b>$receipt_id</b> has been generated.<br>";
+
+        //insert item IDs in cart into database
         foreach ($cart as $counter) {
             $itemID = mysqli_real_escape_string($connect, $counter);
             $q = "INSERT INTO receipt_items (itemID, receiptID) VALUES ($itemID, $receipt_id)";
@@ -41,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Failed to update totalCost in database.<br>";
             echo mysqli_error($connect);
         }
-    } else {
+    } else { //if cart is empty, null or undefined
         echo "cart data is not passed.";
     }
 }

@@ -1,7 +1,7 @@
 <?php
-//this php is to obtain purchase informations
+/* OBTAIN PURCHASE INFORMATIONS */
 include 'connect.php';
-if (session_status() == PHP_SESSION_NONE) { //start session if not started
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 $uid = $_SESSION['userID'];

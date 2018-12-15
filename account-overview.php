@@ -1,16 +1,12 @@
 <?php
-//this php is to obtain account information from session
+/* OBTAIN ACCOUNT INFORMATION*/
 include 'connect.php';
-//obtain user id from session
-if (session_status() == PHP_SESSION_NONE) { //start session if not started
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-//obtain data from session
 $uid = $_SESSION['userID'];
-//run query
 $q = "SELECT * FROM users WHERE userID = " . $uid;
 $result = mysqli_query($connect, $q);
-
 if ($result) {
     //load status to session
     $_SESSION = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -19,7 +15,6 @@ if ($result) {
     $e = $_SESSION['email'];
     $a = $_SESSION['address'];
     $dob = $_SESSION['birthDate'];
-
     echo '<html><head><link rel="stylesheet" href="main.css"></head><body><p><b>
     <label>User ID</label><br>' .
         $uid . '<br><br>' .

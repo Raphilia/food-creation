@@ -1,6 +1,4 @@
 /* CART SCRIPTS */
-//var cart = cart || [];
-//var cartName = cartName || [];
 var cart = new Array();
 var cartName = new Array();
 

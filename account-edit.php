@@ -1,5 +1,5 @@
 <?php
-/* EDIT ACCOUNT INFORMATION*/
+/* EDIT ACCOUNT INFORMATION */
 include 'connect.php';
 //start session if not started
 if (session_status() == PHP_SESSION_NONE) {
